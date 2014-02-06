@@ -1,0 +1,19 @@
+<h1>Users:</h1>
+
+<%= current_user ? current_user.username : "(not logged in)" %>
+
+<%= current_user ? (button_to "Log out", auths_path, method: :delete) : (button_to "Log in", new_auth_path) %>
+
+<ul>
+	<% @users.each do |user| %>
+		<li>
+			<div><strong>Username: </strong><%= user.username %></div><br />
+			<div><strong>First Name: </strong><%= user.first_name %></div><br />
+			<div><strong>Last Name: </strong><%= user.last_name %></div><br />
+			<div><strong>Blog Name: </strong><%= user.blog_name %></div><br />
+			<div><strong>Email: </strong><%= user.email %></div><br />
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to 'New User', new_user_path %>

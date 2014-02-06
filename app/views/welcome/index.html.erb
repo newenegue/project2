@@ -1,0 +1,7 @@
+<h1>ShotBlog</h1>
+
+<%= current_user ? current_user.username : "(not logged in)" %>
+
+<%= current_user ? (button_to "Log Out", auths_path, method: :delete) : (button_to "Log In", new_auth_path) %>
+
+<%= link_to "Sign Up", new_user_path %>

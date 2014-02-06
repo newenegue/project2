@@ -1,20 +1,15 @@
 Project2::Application.routes.draw do
   # match "/images/uploads/*path" => "gridfs#serve", via: :get
-  resources :images, only: [:index, :create, :new, :show]
+  # resources :image
   resources :users
   
-  delete "auths" => "auths#destroy"
-  post "auths/new" => "auths#new"
-  resources :auths, only:[:new, :create]
+  get 'login' => 'auths#new', as: 'login'
+  get 'logout' => 'auths#destroy', as: 'logout'
+  resources :auths, only:[:create]
   
-  # resources :posts do
-  #   get :image, on: :member
-  # end
-  # get "/images/uploads/post/image/:id/:image" => "posts#create"
   resources :posts
-
-  get 'welcome' => 'welcome#index'
   
+  get 'welcome' => 'welcome#index'
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

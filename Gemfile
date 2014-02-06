@@ -4,8 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby'
-# gem "mongoid-paperclip", :require => "mongoid_paperclip"
-# gem "aws-s3",            :require => "aws/s3"
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

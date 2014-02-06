@@ -38,14 +38,6 @@ class PostsController < ApplicationController
 		@post.destroy
 	end
 
-	def image
-	    content = @post.image.read
-	    if stale?(etag: content, last_modified: @post.updated_at.utc, public: true)
-	      send_data content, type: @post.image.file.content_type, disposition: "inline"
-	      expires_in 0, public: true
-	    end
-	end
-
 private
 	def set_post
 		@post = Post.find(params[:id])

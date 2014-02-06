@@ -2,22 +2,14 @@
 
 class ImageUploader < CarrierWave::Uploader::Base
 
-  attr_accessor :image, :image_cache
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  # storage :file
+  storage :file
   # storage :fog
-  storage :grid_fs
-
-  CarrierWave.configure do |config|
-    config.storage = :grid_fs
-    config.root = Rails.root.join('tmp')
-    config.cache_dir = "uploads"
-  end
+  # storage :grid_fs
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -29,8 +21,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+  
+  #   asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   # end
 
   # Process files as they are uploaded:

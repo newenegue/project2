@@ -7,7 +7,7 @@ class Post
 
   field :title, type: String
   field :body, type: String
-  field :images, type: String
+  # field :images, type: String
 
   validates :title, presence: true
 

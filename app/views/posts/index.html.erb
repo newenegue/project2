@@ -3,7 +3,7 @@
 <%# current_user.posts.each do |post| %>
 <% @posts.each do |post| %>
 	<div><%= post.title %></div>
-	<div><%= image_tag post.image_url if post.image? %></div>
+	<div><%= image_tag post.image.url if post.image? %></div>
 	<p>---------------------------------------------</p>
 <% end %>
 

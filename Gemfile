@@ -2,12 +2,22 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+
+# mongoid
 gem 'mongoid', github: 'mongoid/mongoid'
+
+# authentication
 gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby'
+
+# bootstrap
 gem 'bootstrap-sass', '~> 3.1.0'
+
+# carrierwave with mongoid/gridfs image uploading
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+
+# for heroku deployment
 gem 'rails_12factor'
 
 # Use SCSS for stylesheets

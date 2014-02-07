@@ -27,11 +27,15 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		# Post.create(post_params)
 		# Create post through current user
 		@user = current_user
-		@post = @user.posts.create(post_params)
-		redirect_to @post
+		@post = @user.posts.new(post_params)
+		@post.update_attributes(:timestamp => Time.now)
+		if @post.save
+			redirect_to @post
+		else
+			redirect_to new_post_path
+		end
 	end
 
 	def update

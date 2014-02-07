@@ -25,6 +25,9 @@ gem 'rails_12factor'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# TimeDifference
+gem 'time_difference'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

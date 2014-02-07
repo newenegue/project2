@@ -1,6 +1,7 @@
 <h3>Comments</h3>
 <% @post.comments.each do |comment| %>
   <p>
-  	<strong><%= comment.commenter %>:</strong> <%= comment.body %>
+  	<strong><%= comment.commenter %></strong> - <%= time_elapsed(comment.timestamp) %>
+  	<p><%= comment.body %></p>
   </p>
 <% end %>

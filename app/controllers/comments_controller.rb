@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
 	def create
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.new(comment_params)
-		@comment.update_attributes(:commenter => current_user.username)
-		@comment.save
+		@comment.update_attributes(:commenter => current_user.username, :timestamp => Time.now)
+		# @comment.save
 		redirect_to post_path(@post)
 	end
 
@@ -25,6 +25,6 @@ private
 	end
 
 	def comment_params
-		params.require(:comment).permit(:body, :post_id, :commenter)
+		params.require(:comment).permit(:body, :post_id, :commenter, :timestamp)
 	end
 end

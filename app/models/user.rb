@@ -4,7 +4,8 @@ require 'bcrypt'
 class User
   include Mongoid::Document
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  # has_many :comments, dependent: :destroy
 
   attr_accessor :password
 

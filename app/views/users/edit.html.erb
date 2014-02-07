@@ -3,4 +3,5 @@
 	<%= render 'form' %>
 </div>
 
+<p><%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <%= link_to 'Back', posts_path %>

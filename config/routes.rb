@@ -1,11 +1,14 @@
 Project2::Application.routes.draw do
   resources :users
-  resources :posts
+  resources :posts do
+    resources :comments, only:[:new,:create,:index,:show]
+  end
+  
+  # user authenitcation
   get 'login' => 'auths#new', as: 'login'
   get 'logout' => 'auths#destroy', as: 'logout'
   resources :auths, only:[:create]
   
-  # get 'welcome' => 'welcome#index'
   root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

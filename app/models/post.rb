@@ -4,6 +4,7 @@ class Post
   # attr_accessor :image, :image_cache, :remote_image_url
 
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   field :title, type: String
   field :body, type: String

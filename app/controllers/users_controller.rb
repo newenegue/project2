@@ -33,7 +33,9 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		@user.destroy
+		session[:user_id] = nil
+		set_user.destroy
+		redirect_to posts_path
 	end
 
 private

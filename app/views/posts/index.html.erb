@@ -1,10 +1,12 @@
-<h1>My Posts</h1> <%= @show ? (link_to 'My Posts', posts_path) : (link_to 'All Posts', posts_path(show: 'all')) %>
+<h2><%= current_user ? current_user.blog_name : "ShotBlog" %></h2> 
 
-<%# current_user.posts.each do |post| %>
+<div><%= link_to 'New Post', new_post_path %> | <%= @show ? (link_to 'My Posts', posts_path) : (link_to 'All Posts', posts_path(show: 'all')) %></div>
+
+
 <% @posts.each do |post| %>
-	<div><%= post.title %></div>
-	<div><%= image_tag post.image.url if post.image? %></div>
+	<div><%= link_to post.title, post %></div>
+	<div><%#= image_tag post.image.url if post.image? %></div>
 	<p>---------------------------------------------</p>
 <% end %>
 
-<%= link_to 'New Post', new_post_path %>
+

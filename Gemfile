@@ -5,6 +5,7 @@ gem 'rails', '4.0.2'
 
 # mongoid
 gem 'mongoid', github: 'mongoid/mongoid'
+gem 'mongo'
 
 # authentication
 gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby'
@@ -16,6 +17,7 @@ gem 'bootstrap-sass', '~> 3.1.0'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+# gem 'rmagick', '~>2.13.2', :require => 'RMagick'
 
 # for heroku deployment
 gem 'rails_12factor'

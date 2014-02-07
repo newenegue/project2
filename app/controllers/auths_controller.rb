@@ -21,6 +21,6 @@ class AuthsController < ApplicationController
 	#log out
 	def destroy
 		session[:user_id] = nil
-		redirect_to welcome_path
+		redirect_to posts_path
 	end
 end

@@ -1,12 +1,6 @@
 <div class="createuser">
 	<h1>Create a New User</h1>
-	<%=form_for @user do |user|%>
-		<%=user.text_field :username, :placeholder => "Username"%><br>
-		<%=user.password_field :password, :placeholder => "Enter password" %><br>
-		<%=user.text_field :first_name, :placeholder => "First Name"%><br>
-		<%=user.text_field :last_name, :placeholder => "Last Name"%><br>
-		<%=user.text_field :email, :placeholder => "Email"%><br>
-		<%=user.text_field :blog_name, :placeholder => "Blog name"%><br>
-	<%= user.submit "Sign Up" %>
-	<% end %>
+	<%= render 'form' %>
 </div>
+
+<%= link_to 'Back', posts_path %>

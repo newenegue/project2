@@ -1,0 +1,9 @@
+<%=form_for @user do |user|%>
+	<%=user.text_field :username, :placeholder => "Username" if !current_user %><br>
+	<%=user.password_field :password, :placeholder => "Enter password" %><br>
+	<%=user.text_field :first_name, :placeholder => "First Name"%><br>
+	<%=user.text_field :last_name, :placeholder => "Last Name"%><br>
+	<%=user.text_field :email, :placeholder => "Email"%><br>
+	<%=user.text_field :blog_name, :placeholder => "Blog name" if !current_user %><br>
+<%= user.submit %>
+<% end %>

@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 	def index
+		if !current_user
+			params[:show] = 'all'
+		end
 		if params[:show] == 'all'
 			@posts = Post.all
 		else
@@ -12,7 +15,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		
+		set_post
 	end
 
 	def new
@@ -20,18 +23,23 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-		
+		set_post
 	end
 
 	def create
 		# Post.create(post_params)
 		# Create post through current user
-		current_user.posts.create(post_params)
-		redirect_to posts_path
+		@user = current_user
+		@post = @user.posts.create(post_params)
+		redirect_to @post
 	end
 
 	def update
-		
+		if set_post.update(post_params)
+			redirect_to post_path
+		else
+			redirect_to edit_post_path
+		end
 	end
 
 	def destroy

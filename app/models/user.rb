@@ -17,12 +17,16 @@ class User
   field :hashed_password, type: String
 
   # field validations
+  # required
   validates :username, presence: true, uniqueness: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
-  validates :first_name, length: {maximum: 30}
-  validates :last_name, length: {maximum: 30}
   validates :blog_name, presence: true, uniqueness: true
   validates :password, presence: true
+  # validates_format_of :email, { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create, allow_blank: true }
+  # optional
+  validates :first_name, length: {maximum: 30}
+  validates :last_name, length: {maximum: 30}
+  
 
   # validate user password
   def authenticated? pwd

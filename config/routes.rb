@@ -1,16 +1,12 @@
 Project2::Application.routes.draw do
-  # match "/images/uploads/*path" => "gridfs#serve", via: :get
-  # resources :image
   resources :users
-  
+  resources :posts
   get 'login' => 'auths#new', as: 'login'
   get 'logout' => 'auths#destroy', as: 'logout'
   resources :auths, only:[:create]
   
-  resources :posts
-  
-  get 'welcome' => 'welcome#index'
-  root 'welcome#index'
+  # get 'welcome' => 'welcome#index'
+  root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

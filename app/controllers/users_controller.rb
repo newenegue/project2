@@ -11,14 +11,25 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		set_user
 	end
 
 	def create
-		User.create(user_params)
-		redirect_to users_path
+		@user = User.new(user_params)
+		if @user.save
+			redirect_to posts_path
+		else
+			redirect_to new_user_path
+		end
+
 	end
 
 	def update
+		if set_user.update(user_params)
+			redirect_to posts_path
+		else
+			redirect_to edit_user_path
+		end
 	end
 
 	def destroy

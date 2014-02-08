@@ -16,6 +16,7 @@ class AuthsController < ApplicationController
 			session[:user_id] = user.id
 			redirect_to posts_path
 		else
+			flash[:error] = 'Invalid Username/Password'
 			redirect_to login_path
 		end
 	end

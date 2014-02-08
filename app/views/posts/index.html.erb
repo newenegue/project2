@@ -5,7 +5,6 @@
 	<div><%= @show ? (link_to 'My Posts', posts_path) : (link_to 'All Posts', posts_path(show: 'all')) %></div>
 <% end %>
 
-
 <% @posts.each do |post| %>
 	<div><%= link_to post.title, post %></div>
 	<div><%#= image_tag post.image.url if post.image? %></div>

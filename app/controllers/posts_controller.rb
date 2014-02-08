@@ -30,8 +30,7 @@ class PostsController < ApplicationController
 		# Create post through current user
 		@user = current_user
 		@post = @user.posts.new(post_params)
-		@post.update_attributes(:timestamp => Time.now)
-		if @post.save
+		if @post.update_attributes(:timestamp => Time.now)
 			redirect_to @post
 		else
 			redirect_to new_post_path

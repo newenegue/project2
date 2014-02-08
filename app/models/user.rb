@@ -5,7 +5,6 @@ class User
   include Mongoid::Document
 
   has_many :posts, dependent: :destroy
-  # has_many :comments, dependent: :destroy
 
   attr_accessor :password
 
@@ -23,7 +22,6 @@ class User
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
   validates :blog_name, presence: true, uniqueness: true
   validates :password, presence: true
-  # validates_format_of :email, { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create, allow_blank: true }
   # optional
   validates :first_name, length: {maximum: 30}
   validates :last_name, length: {maximum: 30}

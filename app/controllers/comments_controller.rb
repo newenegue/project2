@@ -15,7 +15,6 @@ class CommentsController < ApplicationController
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.new(comment_params)
 		@comment.update_attributes(:commenter => current_user.username, :timestamp => Time.now)
-		# @comment.save
 		redirect_to post_path(@post)
 	end
 

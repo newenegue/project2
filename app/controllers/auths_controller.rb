@@ -11,12 +11,15 @@ class AuthsController < ApplicationController
 
 	# log in
 	def create
+		# @tmp_user = User.new(username: params[:user][:username])
 		user = User.find_by(username: params[:user][:username])
+
 		if user && user.authenticated?(params[:user][:password])
 			session[:user_id] = user.id
 			redirect_to posts_path
 		else
 			flash[:error] = 'Invalid Username/Password'
+			# render action: 'new'
 			redirect_to login_path
 		end
 	end

@@ -14,8 +14,11 @@ class CommentsController < ApplicationController
 	def create
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.new(comment_params)
-		@comment.update_attributes(:commenter => current_user.username, :timestamp => Time.now)
-		redirect_to post_path(@post)
+		if @comment.update_attributes(:commenter => current_user.username, :timestamp => Time.now)
+			redirect_to post_path(@post)
+		else
+			render action: 'new'
+		end
 	end
 
 private

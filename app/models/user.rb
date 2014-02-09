@@ -5,6 +5,7 @@ class User
   include Mongoid::Document
 
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   attr_accessor :password
 

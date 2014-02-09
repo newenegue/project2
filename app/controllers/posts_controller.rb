@@ -16,6 +16,12 @@ class PostsController < ApplicationController
 
 	def show
 		set_post
+		@show_comments = params[:show_comments]
+		if params[:show_comments] == 'all' || @post.comments.length <= 3
+			@comments = @post.comments
+		else
+			@comments = @post.comments[-3..-1]
+		end
 	end
 
 	def new
@@ -33,7 +39,8 @@ class PostsController < ApplicationController
 		if @post.update_attributes(:timestamp => Time.now)
 			redirect_to @post
 		else
-			redirect_to new_post_path
+			flash[:error] = 'Post title is missing'
+			render action: 'new'
 		end
 	end
 

@@ -2,7 +2,15 @@ Project2::Application.routes.draw do
   resources :users
   resources :posts do
     resources :comments, only:[:new,:create,:index,:show]
+    get 'likes' => 'likes#index'
+    post 'likes' => 'likes#create'
+    # delete 'likes/:id' => 'likes#destroy', as: 'unlike'
   end
+
+  # get 'likes' => 'likes#index'
+  # post 'likes' => 'likes#create', as: 'like'
+  delete 'likes/:id' => 'likes#destroy', as: 'unlike'
+  
   
   # user authenitcation
   get 'login' => 'auths#new', as: 'login'

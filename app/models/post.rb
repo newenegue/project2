@@ -10,7 +10,6 @@ class Post
   field :title, type: String
   field :body, type: String
   field :timestamp, type: Time
-  field :comments_counter, type: Integer
 
   validates :title, presence: true
 

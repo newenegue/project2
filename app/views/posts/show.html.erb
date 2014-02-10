@@ -12,6 +12,8 @@
 
 <p>by: <%= @post.user.username %></p>
 
+<%= render 'likes/like' %>
+
 <%= render 'comments/comment' %>
 
 <% if current_user %>

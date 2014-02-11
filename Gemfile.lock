@@ -59,6 +59,9 @@ GEM
     dragonfly (1.0.3)
       multi_json (~> 1.0)
       rack
+    dragonfly-s3_data_store (1.0.3)
+      dragonfly (~> 1.0)
+      fog
     erubis (2.7.0)
     excon (0.31.0)
     execjs (2.0.2)
@@ -106,6 +109,8 @@ GEM
     origin (2.1.0)
     polyglot (0.3.3)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.2)
@@ -171,12 +176,14 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 4.0.0)
   dragonfly (~> 1.0.3)
+  dragonfly-s3_data_store
   figaro
   fog
   jbuilder (~> 1.2)
   jquery-rails
   mongo
   mongoid!
+  rack-cache
   rails (= 4.0.2)
   rails_12factor
   sass-rails (~> 4.0.0)

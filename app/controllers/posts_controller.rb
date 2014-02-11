@@ -36,7 +36,8 @@ class PostsController < ApplicationController
 		# Create post through current user
 		@user = current_user
 		@post = @user.posts.new(post_params)
-		if @post.update_attributes(:timestamp => Time.now)
+		@post.update_attributes(:timestamp => Time.now)
+		if @post.save
 			redirect_to @post
 		else
 			flash[:error] = 'Post title is missing'
@@ -63,7 +64,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :body, :image)
+		params.require(:post).permit(:title, :body, :image, :image_url)
 	end
 
 end

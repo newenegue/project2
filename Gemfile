@@ -14,18 +14,10 @@ gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby'
 # bootstrap
 gem 'bootstrap-sass', '~> 3.1.0'
 
-# carrierwave with mongoid/gridfs image uploading
-# gem 'carrierwave'
-# gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-# gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
-# gem 'rmagick', '~>2.13.2', :require => 'RMagick'
-
-# paperclip
-# gem 'mongoid-paperclip-google', github: 'danieljacobarcher/mongoid-paperclip', :require => 'mongoid_paperclip'
-# gem 'paperclip'
-
 # dragonfly
 gem 'dragonfly', "~>1.0.3"
+gem 'dragonfly-s3_data_store'
+gem 'rack-cache', :require => 'rack/cache'
 
 # fog for file uploading
 gem 'fog'

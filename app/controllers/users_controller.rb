@@ -25,24 +25,33 @@ class UsersController < ApplicationController
 
 	def update
 		# authenticate
-		if set_user.authenticated?(params[:user][:password])
-			if params[:user][:new_password] == nil
+		password = params[:user][:password]
+		new_password = params[:user][:new_password]
+		confirm_password = params[:user][:confirm_password]
+		if set_user.authenticated?(password)
+			# user wants to update profile
+			if new_password == ''
 				if set_user.update(user_params)
 					redirect_to posts_path
 				else
 					redirect_to edit_user_path
 				end
-			elsif params[:user][:new_password] == params[:user][:confirm_password] && params[:user][:new_password] != params[:user][:password]
-				params[:user][:password] = params[:user][:new_password]
+			# user wants to change password
+			elsif new_password == confirm_password && new_password != password && new_password != ''
+				params[:user][:password] = new_password
 				if set_user.update(user_params)
 					redirect_to posts_path
 				else
 					redirect_to edit_user_path
 				end
 			else
-				redirect_to edit_user_path	
+				flash[:error] = 'Passwords do not match'
+				# let user know the new passwords were not the same
+				redirect_to edit_user_path
 			end
 		else
+			flash[:error] = 'Invalid Password'
+			# wrong password
 			redirect_to edit_user_path
 		end
 	end
@@ -58,6 +67,14 @@ private
 		@user = User.find(params[:id])
 	end
 	def user_params
-		params.require(:user).permit(:username, :password, :email, :first_name, :last_name, :blog_name)
+		params.require(:user).permit(
+			:username, 
+			:password, 
+			:email, 
+			:first_name, 
+			:last_name, 
+			:blog_name, 
+			:avatar, 
+			:avatar_url)
 	end
 end

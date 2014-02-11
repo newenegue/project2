@@ -1,12 +1,14 @@
 class Post
   include Mongoid::Document
-  extend Dragonfly::Model
 
+  extend Dragonfly::Model
   dragonfly_accessor :image
 
+  # relationships
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :images, dependent: :destroy
 
   field :title, type: String
   field :body, type: String

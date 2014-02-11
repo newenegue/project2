@@ -3,9 +3,15 @@ require 'bcrypt'
 
 class User
   include Mongoid::Document
+  
+  # dragonfly
+  extend Dragonfly::Model
+  dragonfly_accessor :avatar
 
+  # relationships
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  # has_many :comments, dependent: :destroy
 
   attr_accessor :password, :new_password, :confirm_password
 
@@ -16,6 +22,10 @@ class User
   field :last_name, type: String
   field :blog_name, type: String
   field :hashed_password, type: String
+
+  # dragonfly fields
+  field :avatar_uid, type: String
+  field :avatar_name, type: String
 
   # field validations
   # required

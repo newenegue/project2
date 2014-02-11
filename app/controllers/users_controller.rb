@@ -17,16 +17,31 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			redirect_to posts_path
+			redirect_to login_path
 		else
 			redirect_to new_user_path
 		end
-
 	end
 
 	def update
-		if set_user.update(user_params)
-			redirect_to posts_path
+		# authenticate
+		if set_user.authenticated?(params[:user][:password])
+			if params[:user][:new_password] == nil
+				if set_user.update(user_params)
+					redirect_to posts_path
+				else
+					redirect_to edit_user_path
+				end
+			elsif params[:user][:new_password] == params[:user][:confirm_password] && params[:user][:new_password] != params[:user][:password]
+				params[:user][:password] = params[:user][:new_password]
+				if set_user.update(user_params)
+					redirect_to posts_path
+				else
+					redirect_to edit_user_path
+				end
+			else
+				redirect_to edit_user_path	
+			end
 		else
 			redirect_to edit_user_path
 		end

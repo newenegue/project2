@@ -1,7 +1,7 @@
-<p>Number of Likes: <%= @post.likes.length %></p>
 <!-- like button toggle for current user -->
-<%= (Like.find_by(user_id: current_user.id, post_id: @post.id)) ? (link_to 'Unlike', unlike_path(@post), method: :delete) : (link_to 'Like', post_likes_path(@post), :method => :post) %>
+
 <!-- display all users who like the post -->
-<% @post.likes.each do |like| %>
-	<%= like.user.username %>
-<% end %>
+<%# @post.likes.each do |like| %>
+	<%= current_user == like.user ? 'You' : like.user.username %>
+	<%#= like.user.username %>
+<%# end %>

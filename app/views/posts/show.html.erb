@@ -9,10 +9,15 @@
   <strong>Body:</strong>
   <%= @post.body %>
 </p>
+<%= image_tag @post.image.thumb('100x100#').url if @post.image_stored? %>
 
 <p>by: <%= @post.user.username %></p>
 
-<%= render 'likes/like' %>
+<%= ((Like.find_by(user_id: current_user.id, post_id: @post.id)) ? (link_to 'Unlike', unlike_path(@post), method: :delete) : (link_to 'Like', post_likes_path(@post), :method => :post) ) if current_user %> 
+<p><%= @post.likes.length == 1 ? @post.likes.length.to_s + ' like' : @post.likes.length.to_s + ' likes' %>: <%= render @post.likes %></p>
+
+
+
 
 <%= render 'comments/comment' %>
 

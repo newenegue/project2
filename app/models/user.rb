@@ -7,7 +7,7 @@ class User
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  attr_accessor :password
+  attr_accessor :password, :new_password, :confirm_password
 
   # user fields
   field :username, type: String

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'bson_ext'
 
 # mongoid
 gem 'mongoid', github: 'mongoid/mongoid'
@@ -14,10 +15,23 @@ gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby'
 gem 'bootstrap-sass', '~> 3.1.0'
 
 # carrierwave with mongoid/gridfs image uploading
-gem 'carrierwave'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+# gem 'carrierwave'
+# gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+# gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 # gem 'rmagick', '~>2.13.2', :require => 'RMagick'
+
+# paperclip
+# gem 'mongoid-paperclip-google', github: 'danieljacobarcher/mongoid-paperclip', :require => 'mongoid_paperclip'
+# gem 'paperclip'
+
+# dragonfly
+gem 'dragonfly', "~>1.0.3"
+
+# fog for file uploading
+gem 'fog'
+
+# storing google cloud or S3 id and secret
+gem 'figaro'
 
 # for heroku deployment
 gem 'rails_12factor'

@@ -1,7 +1,8 @@
 class Post
   include Mongoid::Document
+  extend Dragonfly::Model
 
-  # attr_accessor :image, :image_cache, :remote_image_url
+  dragonfly_accessor :image
 
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -10,10 +11,10 @@ class Post
   field :title, type: String
   field :body, type: String
   field :timestamp, type: Time
+  field :image_uid, type: String
+  field :image_name, type: String
 
   validates :title, presence: true
-
-  # mount_uploader :image, ImageUploader
 
   # validates_attachment_content_type :avatar, :content_type => %w(image/jpeg image/jpg image/png)
 end
